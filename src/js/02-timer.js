@@ -2,47 +2,41 @@ import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.min.css';
 
 const options = {
-    enableTime: true,
-    time_24hr: true,
-    defaultDate: new Date(),
-    minuteIncrement: 1,
-    onClose(selectedDates) {
-        const selected = selectedDates[0].getTime();
-        if (selected < options.defaultDate.getTime()) {
-            alert('Please choose a date in the future');
-        } else {
-            startBtn.disabled = false;
-            return selectedDate = selectedDates[0];
-        }
-    },
+  enableTime: true,
+  time_24hr: true,
+  defaultDate: new Date(),
+  minuteIncrement: 1,
+  onClose(selectedDates) {
+    const selected = selectedDates[0].getTime();
+    if (selected < options.defaultDate.getTime()) {
+      alert('Please choose a date in the future');
+    } else {
+      startBtn.disabled = false;
+      return (selectedDate = selectedDates[0]);
+    }
+  },
 };
 const picker = document.querySelector('#datetime-picker');
 const startBtn = document.querySelector('[data-start]');
 startBtn.disabled = false;
 function convertMs(ms) {
-    // Number of milliseconds per unit of time
-    const second = 1000;
-    const minute = second * 60;
-    const hour = minute * 60;
-    const day = hour * 24;
-  
-    // Remaining days
-    const days = Math.floor(ms / day);
-    // Remaining hours
-    const hours = Math.floor((ms % day) / hour);
-    // Remaining minutes
-    const minutes = Math.floor(((ms % day) % hour) / minute);
-    // Remaining seconds
-    const seconds = Math.floor((((ms % day) % hour) % minute) / second);
-  
-    return { days, hours, minutes, seconds };
-  };
+  const second = 1000;
+  const minute = second * 60;
+  const hour = minute * 60;
+  const day = hour * 24;
+
+  const days = Math.floor(ms / day);
+  const hours = Math.floor((ms % day) / hour);
+  const minutes = Math.floor(((ms % day) % hour) / minute);
+  const seconds = Math.floor((((ms % day) % hour) % minute) / second);
+  return { days, hours, minutes, seconds };
+}
 
 flatpickr(picker, options);
 
 function addLeadingZero(value) {
   if (value < 10) {
-    return value = "0"+value;
+    return (value = '0' + value);
   } else {
     return value;
   }

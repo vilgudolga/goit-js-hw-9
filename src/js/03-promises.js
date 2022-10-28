@@ -4,7 +4,6 @@ const stepDelayInput = document.querySelector('input[name="step"]');
 const amountInput = document.querySelector('input[name="amount"]');
 const createBtn = document.querySelector('button[type="submit"]');
 
-
 function createPromise(position, delay) {
   const promise = new Promise((resolve, reject) => {
     setTimeout(() => {
