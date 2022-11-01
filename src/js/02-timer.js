@@ -12,7 +12,7 @@ const options = {
       alert('Please choose a date in the future');
     } else {
       startBtn.disabled = false;
-      return (selectedDate = selectedDates[0]);
+      return (selectedDates = selectedDates[0]);
     }
   },
 };
